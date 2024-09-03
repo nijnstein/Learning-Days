@@ -1,5 +1,5 @@
 # Software for Learning the days of the week for kids 
-# Software voor het leren van week dagen voor kinderen
+# Software voor het leren van de dagen van de week
 
 The application - De applicatie: 
 
