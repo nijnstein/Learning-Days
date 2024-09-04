@@ -20,13 +20,13 @@ namespace Datums01
             Volgende(); 
         }
 
-        void Volgende()
+        void Volgende(bool next = true)
         {
             bericht.Visible = false;
 
             vraagNr++;
 
-            vraag = VraagGenerator.Volgende();
+            vraag = next || vraag == null ? VraagGenerator.Volgende() : vraag;
             antwoordmap = VraagGenerator.Randomize(new int[] { 1, 2, 3, 4 });
 
             button1.Text = vraag[antwoordmap[0]];
@@ -71,7 +71,7 @@ namespace Datums01
                 Application.DoEvents();
                 Thread.Sleep(2000);
 
-                bericht.Visible = false;
+                Volgende(false); 
             }
         }
     }
