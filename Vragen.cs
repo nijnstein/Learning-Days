@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Datums01
 {
@@ -113,6 +114,149 @@ namespace Datums01
                         );
                     }
 
+                case 2:
+                    {
+                        switch (random.Next(0, 4))
+                        {
+                            case 0:
+                                {
+                                    // morgen
+                                    int[] a = Randomize(new int[]
+                                    {
+                                        (i + 2) % 7,
+                                        (i + 3) % 7,
+                                        (i + 4) % 7,
+                                        (i + 5) % 7,
+                                        (i + 6) % 7,
+                                    });
+
+                                    return new Vraag(
+                                        $"Als het vandaag {DagenNL[i]} is, welke dag is het morgen\n\nIf its {DagenEN[i]} today, which day is tomorrow",
+                                        $"{DagenNL[(i + 1) % 7]}\n{DagenEN[(i + 1) % 7]}",
+                                        $"{DagenNL[a[0]]}\n{DagenEN[a[0]]}",
+                                        $"{DagenNL[a[1]]}\n{DagenEN[a[1]]}",
+                                        $"{DagenNL[a[2]]}\n{DagenEN[a[2]]}"
+                                    );
+                                }
+
+                            case 1:
+                                {
+                                    // overmorgen
+                                    int[] a = Randomize(new int[]
+                                    {
+                                        (i + 1) % 7,
+                                        (i + 3) % 7,
+                                        (i + 4) % 7,
+                                        (i + 5) % 7,
+                                        (i + 6) % 7,
+                                    });
+
+                                    return new Vraag(
+                                        $"Als het vandaag {DagenNL[i]} is, welke dag is het overmorgen\n\nIf its {DagenEN[i]} today, which day is the day after tomorrow",
+                                        $"{DagenNL[(i + 2) % 7]}\n{DagenEN[(i + 2) % 7]}",
+                                        $"{DagenNL[a[0]]}\n{DagenEN[a[0]]}",
+                                        $"{DagenNL[a[1]]}\n{DagenEN[a[1]]}",
+                                        $"{DagenNL[a[2]]}\n{DagenEN[a[2]]}"
+                                    );
+
+                                }
+
+                            case 2:
+                                {
+                                    // gisteren
+                                    int[] a = Randomize(new int[]
+                                    {
+                                        (i + 1) % 7,
+                                        (i + 2) % 7,
+                                        (i + 3) % 7,
+                                        (i + 4) % 7,
+                                        (i + 5) % 7,
+                                    });
+
+                                    return new Vraag(
+                                        $"Als het vandaag {DagenNL[i]} is, welke dag was het gisteren\n\nIf its {DagenEN[i]} today, which day was yesterday",
+                                        $"{DagenNL[(i + 6) % 7]}\n{DagenEN[(i + 6) % 7]}",
+                                        $"{DagenNL[a[0]]}\n{DagenEN[a[0]]}",
+                                        $"{DagenNL[a[1]]}\n{DagenEN[a[1]]}",
+                                        $"{DagenNL[a[2]]}\n{DagenEN[a[2]]}"
+                                    );
+                                }
+
+                            case 3:
+                            default:
+                                {
+                                    // vaste vragen 
+
+                                    // Wat is de eerste dag van de week?
+                                    // Wat is de eerste dag van het weekend?
+                                    // Wat is de laatste dag van het weekend?
+                                    switch (random.Next(0, 5))
+                                    {
+                                        // Hoeveel dagen heeft een week?
+                                        case 0:
+                                            {
+                                                int[] a = Randomize([1, 2, 3, 4, 5, 6]);
+                                                return new Vraag(
+                                                    $"Hoeveel dagen heeft een week\n\nHow many days are there in a week",
+                                                    $"{7}\n{7}",
+                                                    $"{a[0]}\n{a[0]}",
+                                                    $"{a[1]}\n{a[1]}",
+                                                    $"{a[2]}\n{a[2]}");
+                                            }
+
+                                        // Hoeveel dagen zitten er in een weekend?
+                                        case 1:
+                                            {
+                                                int[] a = Randomize([1, 3, 4, 5]);
+                                                return new Vraag(
+                                                    $"Hoeveel dagen zitten er in een weekend\n\nHow many days are there in a weekend",
+                                                    $"{2}\n{2}",
+                                                    $"{a[0]}\n{a[0]}",
+                                                    $"{a[1]}\n{a[1]}",
+                                                    $"{a[2]}\n{a[2]}");
+                                            }
+
+                                        // Wat is de eerste dag van de week
+                                        case 2:
+                                            {
+                                                int[] a = Randomize([1, 2, 3, 4, 5, 6]);
+                                                return new Vraag(
+                                                    $"Wat is de eerste dag van de week\n\nWhat is the first day of the week",
+                                                    $"{DagenNL[0]}\n{DagenEN[0]}",
+                                                    $"{DagenNL[a[0]]}\n{DagenEN[a[0]]}",
+                                                    $"{DagenNL[a[1]]}\n{DagenEN[a[1]]}",
+                                                    $"{DagenNL[a[2]]}\n{DagenEN[a[2]]}");
+                                            }
+
+                                        // Wat is de eerste dag van de weekend
+                                        case 3:
+                                            {
+                                                int[] a = Randomize([0, 1, 2, 3, 4, 6]);
+                                                return new Vraag(
+                                                    $"Wat is de eerste dag van de weekend\n\nWhat is the first day of the weekend",
+                                                    $"{DagenNL[5]}\n{DagenEN[5]}",
+                                                    $"{DagenNL[a[0]]}\n{DagenEN[a[0]]}",
+                                                    $"{DagenNL[a[1]]}\n{DagenEN[a[1]]}",
+                                                    $"{DagenNL[a[2]]}\n{DagenEN[a[2]]}");
+                                            }
+
+                                        // Wat is de laatste dag van de weekend
+                                        case 4:
+                                        default:
+                                            {
+                                                int[] a = Randomize([0, 1, 2, 3, 4, 5]);
+                                                return new Vraag(
+                                                    $"Wat is de laatste dag van de weekend\n\nWhat is the last day of the weekend",
+                                                    $"{DagenNL[6]}\n{DagenEN[6]}",
+                                                    $"{DagenNL[a[0]]}\n{DagenEN[a[0]]}",
+                                                    $"{DagenNL[a[1]]}\n{DagenEN[a[1]]}",
+                                                    $"{DagenNL[a[2]]}\n{DagenEN[a[2]]}");
+                                            }
+                                    }
+                                }
+                        }
+                    }
+             
                 default:
                     {
                         List<int> a = Randomize(new int[]
