@@ -86,7 +86,7 @@ namespace Datums01
 
                         return new Vraag(
                             $"Welke dag komt voor {DagenNL[i]}\n\nWhich day comes before {DagenEN[i]}",
-                            $"{DagenNL[(i + 6) % 7]}\n{DagenEN[(i + 1) % 7]}",
+                            $"{DagenNL[(i + 6) % 7]}\n{DagenEN[(i + 6) % 7]}",
                             $"{DagenNL[a[0]]}\n{DagenEN[a[0]]}",
                             $"{DagenNL[a[1]]}\n{DagenEN[a[1]]}",
                             $"{DagenNL[a[2]]}\n{DagenEN[a[2]]}"
